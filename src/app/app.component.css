@@ -1,0 +1,16 @@
+body {
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+
+}
+
+h1 {
+  align-self: flex-end;
+  overflow: auto;
+}
+
+app-nav-bar {
+  align-self: flex-start;
+  justify-content: flex-start;
+}
