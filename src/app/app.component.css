@@ -1,16 +1,15 @@
 body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings:
+  "cv11", "salt", "ss01", "ss03",
+  "cv01", "cv02", "cv03", "cv04"
+  "cv05", "cv06", "cv09", "cv10";
+
+
   background-color: aqua;
   display: flex;
   flex-direction: column;
-
-}
-
-h1 {
-  align-self: flex-end;
-  overflow: auto;
-}
-
-app-nav-bar {
-  align-self: flex-start;
-  justify-content: flex-start;
+  border-radius: 10px;
 }
