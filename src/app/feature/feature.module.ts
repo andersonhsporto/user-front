@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,7 +12,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/component/login/login.component';
 import { AddUserComponent } from './user/component/add-user/add-user.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 
 const materialModules = [
   MatInputModule,
@@ -20,11 +22,12 @@ const materialModules = [
   MatGridListModule,
   MatSelectModule,
   MatDatepickerModule,
+  MatButtonModule,
 ];
 
 @NgModule({
   declarations: [LoginComponent, AddUserComponent],
-  imports: [CommonModule, materialModules],
+  imports: [CommonModule, materialModules, ReactiveFormsModule],
   exports: [AddUserComponent],
 })
 export class FeatureModule {}
