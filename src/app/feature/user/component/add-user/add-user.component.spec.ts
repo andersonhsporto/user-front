@@ -16,6 +16,10 @@ describe('AddUserComponent', () => {
   });
 
   it('should create', () => {
+
     expect(component).toBeTruthy();
   });
+
+  //@ts-expect-error
+  component.TESTE()
 });
