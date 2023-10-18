@@ -1,6 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from './../../../../core/service/user.service';
 import { Component } from '@angular/core';
+import { IUser } from 'src/app/core/interface/user';
 
 const MY_DATE_FORMATS = {
   parse: {
@@ -39,7 +40,21 @@ export class AddUserComponent {
 
   constructor(private UserService: UserService) {}
 
-  printALL() {
-    console.log(this.userForm.value);
+  onSubmit() {
+  }
+
+  createUser() {
+    const user:IUser = this.toInterface(this.userForm);
+  }
+
+
+  private toInterface(form: IUserForm): IUser {
+    return {
+      name: form.value.name,
+      username: form.value.username,
+      email: form.value.email,
+      dateOfBirth: form.value.dateOfBirth,
+      password: form.value.password?
+    };
   }
 }
