@@ -1,7 +1,7 @@
+import { IUser } from 'src/app/core/interface/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../interface/user';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +9,13 @@ import { IUser } from '../interface/user';
 export class UserService {
   api: string = environment.api;
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   public addUser(body: IUser) {
-    return this.http.post<IUser>(this.api + 'users', body);
+    return this.httpClient.post<IUser>(this.api + 'users', body);
+  }
+
+  public getAllUsers() {
+    return this.httpClient.get<IUser[]>(this.api + 'users');
   }
 }
