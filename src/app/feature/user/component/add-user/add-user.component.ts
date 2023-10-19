@@ -41,20 +41,24 @@ export class AddUserComponent {
   constructor(private UserService: UserService) {}
 
   onSubmit() {
+    this.createUser();
   }
 
   createUser() {
-    const user:IUser = this.toInterface(this.userForm);
+    const user: IUser = this.toInterface(this.userForm.value);
+
+    this.UserService.addUser(user);
   }
 
 
-  private toInterface(form: IUserForm): IUser {
+
+  private toInterface(form: any): IUser {
     return {
-      name: form.value.name,
-      username: form.value.username,
-      email: form.value.email,
-      dateOfBirth: form.value.dateOfBirth,
-      password: form.value.password?
-    };
+      name: form.name,
+      username: form.username,
+      email: form.email,
+      dateOfBirth: form.dateOfBirth,
+      password: form.password
+    }
   }
 }
