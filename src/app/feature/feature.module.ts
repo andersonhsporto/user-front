@@ -10,8 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from './login/component/login/login.component';
 import { AddUserComponent } from './user/component/add-user/add-user.component';
+import { ListUserComponent } from './user/component/list-user/list-user.component';
 
 const materialModules = [
   MatInputModule,
@@ -23,10 +25,11 @@ const materialModules = [
   MatSelectModule,
   MatDatepickerModule,
   MatButtonModule,
+  MatTableModule,
 ];
 
 @NgModule({
-  declarations: [LoginComponent, AddUserComponent],
+  declarations: [LoginComponent, AddUserComponent, ListUserComponent],
   imports: [CommonModule, materialModules, ReactiveFormsModule],
   exports: [AddUserComponent],
 })
