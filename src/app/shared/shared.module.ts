@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [NavBarComponent],
@@ -22,6 +23,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatDividerModule,
     MatListModule,
     MatExpansionModule,
+    RouterModule,
   ],
   exports: [NavBarComponent],
 })
