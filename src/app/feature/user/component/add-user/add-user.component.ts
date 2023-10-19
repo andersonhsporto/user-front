@@ -2,6 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from './../../../../core/service/user.service';
 import { Component } from '@angular/core';
 import { IUser } from 'src/app/core/interface/user';
+import Swal from 'sweetalert2';
 
 const MY_DATE_FORMATS = {
   parse: {
@@ -47,10 +48,34 @@ export class AddUserComponent {
   createUser() {
     const user: IUser = this.toInterface(this.userForm.value);
 
-    this.UserService.addUser(user);
+    this.UserService.addUser(user).subscribe({
+      next: (r) => {
+        console.log(r);
+        this.alertSuccess();
+      },
+      error: (e) => {
+        console.log(e);
+        this.alertError(e);
+      },
+    });
   }
 
+  private alertSuccess(): void {
+    Swal.fire({
+      title: 'Usuário cadastrado com sucesso',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
+  }
 
+  private alertError(errorMessage: string): void {
+    Swal.fire({
+      title: 'Erro ao cadastrar o cliente',
+      text: errorMessage,
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  }
 
   private toInterface(form: any): IUser {
     return {
@@ -58,7 +83,7 @@ export class AddUserComponent {
       username: form.username,
       email: form.email,
       dateOfBirth: form.dateOfBirth,
-      password: form.password
-    }
+      password: form.password,
+    };
   }
 }
