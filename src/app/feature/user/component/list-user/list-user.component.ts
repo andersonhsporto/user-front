@@ -25,7 +25,7 @@ const ELEMENT_DATA: IUser[] = [
   styleUrls: ['./list-user.component.css'],
 })
 export class ListUserComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'username', 'email', 'dateOfBirth'];
+  displayedColumns: string[] = ['name', 'username', 'email', 'dateOfBirth', 'actions'];
   dataSource = ELEMENT_DATA;
   users: IUser[] = [];
 
@@ -37,5 +37,9 @@ export class ListUserComponent implements OnInit {
         this.users = r;
       }
     })
+  }
+
+  delete(id: number): void {
+    console.log(id);
   }
 }
