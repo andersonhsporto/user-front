@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/core/interface/user';
 import { UserService } from './../../../../core/service/user.service';
-
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 // name: string;
 // username: string;
 // email: string;
@@ -29,17 +31,55 @@ export class ListUserComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   users: IUser[] = [];
 
-  constructor(private UserService: UserService) {}
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
-    this.UserService.getAllUsers().subscribe({
+    this.userService.getAllUsers().subscribe({
       next: (r) => {
         this.users = r;
+      },
+    });
+  }
+
+  openDialog(obj: any) {
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '500px',
+      data: obj,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event == 'Update') {
+        console.log('Teste');
+      } else if (result.event == 'Delete') {
+        console.log('Teste');
       }
-    })
+    });
+  }
+
+  update(obj: IUser): void {
+    
   }
 
   delete(id: number): void {
-    console.log(id);
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: 'Você não poderá reverter isso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteById(id).subscribe(() => {
+          Swal.fire('Deletado!', 'Usuário foi deletado com sucesso!.', 'success');
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }

@@ -39,7 +39,7 @@ export class AddUserComponent {
     password: new FormControl('', { validators: [Validators.required], nonNullable: true }),
   });
 
-  constructor(private UserService: UserService) {}
+  constructor(private userService: UserService) {}
 
   onSubmit() {
     this.createUser();
@@ -48,7 +48,7 @@ export class AddUserComponent {
   createUser() {
     const user: IUser = this.toInterface(this.userForm.value);
 
-    this.UserService.addUser(user).subscribe({
+    this.userService.addUser(user).subscribe({
       next: (r) => {
         console.log(r);
         this.alertSuccess();
@@ -70,7 +70,7 @@ export class AddUserComponent {
 
   private alertError(errorMessage: string): void {
     Swal.fire({
-      title: 'Erro ao cadastrar o cliente',
+      title: 'Erro ao cadastrar o Usuário',
       text: errorMessage,
       icon: 'error',
       confirmButtonText: 'Ok',
