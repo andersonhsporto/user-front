@@ -18,4 +18,8 @@ export class UserService {
   public getAllUsers() {
     return this.httpClient.get<IUser[]>(this.api + 'users');
   }
+
+  public deleteById(id: number) {
+    return this.httpClient.delete(this.api + 'users/' + id);
+  }
 }
