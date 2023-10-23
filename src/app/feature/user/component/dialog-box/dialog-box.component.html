@@ -19,19 +19,20 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Email: </mat-label>
-        <input placeholder="email@email.com" matInput formControlName="dateOfBirth" />
-      </mat-form-field>
-
-      <mat-form-field>
         <mat-label>Data de Nascimento: </mat-label>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Data de Nascimento" />
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput
+        [matDatepicker]="picker"
+         formControlName="dateOfBirth"
+         placeholder="Data de Nascimento"
+         value="dateOfBirth"
+         readonly
+         />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker  #picker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="actions" mat-dialog-actions>
-      <button mat-button (click)="doAction()">Editar</button>
+      <button mat-button (click)="doAction()" mat-raised-button color="primary">Editar</button>
       <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
     </div>
   </form>

@@ -1,6 +1,6 @@
 <mat-grid-list cols="1" rowHeight="500px">
   <mat-grid-tile>
-    <div class="example-container">
+    <div class="content">
       <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
         <mat-form-field appearance="fill" class="width-50">
           <mat-label>Nome</mat-label>
@@ -30,8 +30,7 @@
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
-
-        <br /><br />
+        <br />
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>Data de Nascimento: </mat-label>
           <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
@@ -39,10 +38,8 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <button mat-button color="primary" type="submit">Cadastrar</button>
+        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
       </form>
     </div>
   </mat-grid-tile>
-
-  <div class="example-button-row"></div>
 </mat-grid-list>

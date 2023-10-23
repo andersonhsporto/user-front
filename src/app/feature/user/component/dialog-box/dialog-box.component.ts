@@ -51,7 +51,7 @@ export class DialogBoxComponent {
       name: user.name,
       username: user.username,
       email: user.email,
-      dateOfBirth: user.dateOfBirth,
+      dateOfBirth: new Date(user.dateOfBirth),
     });
   }
 }
