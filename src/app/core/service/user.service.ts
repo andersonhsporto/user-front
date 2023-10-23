@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public addUser(body: IUser) {
-    return this.httpClient.post<IUser>(this.api + 'users', body);
+  public addUser(obj: IUser) {
+    return this.httpClient.post<IUser>(this.api + 'users', obj);
   }
 
   public getAllUsers() {
@@ -21,5 +21,9 @@ export class UserService {
 
   public deleteById(id: number) {
     return this.httpClient.delete(this.api + 'users/' + id);
+  }
+
+  public updateUser(obj: IUser, id: number) {
+    return this.httpClient.put<IUser[]>(this.api + 'users/' + id, obj);
   }
 }

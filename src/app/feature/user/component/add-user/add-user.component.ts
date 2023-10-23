@@ -1,8 +1,9 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from './../../../../core/service/user.service';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/core/interface/user';
+import { IUserForm } from 'src/app/core/interface/user-form';
 import Swal from 'sweetalert2';
+import { UserService } from './../../../../core/service/user.service';
 
 const MY_DATE_FORMATS = {
   parse: {
@@ -15,14 +16,6 @@ const MY_DATE_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
-interface IUserForm {
-  name: FormControl<string>;
-  username: FormControl<string>;
-  email: FormControl<string>;
-  dateOfBirth?: FormControl<Date | null>;
-  password?: FormControl<string>;
-}
 
 @Component({
   selector: 'app-add-user',

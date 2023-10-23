@@ -1,29 +1,38 @@
 <!-- dialog-box.component.html -->
-<h1 mat-dialog-title><strong>Editar Usuário</strong></h1>
-<div mat-dialog-content>
-  <mat-label>Nome: </mat-label>
-  <mat-form-field>
-    <input placeholder="Nome" matInput [(ngModel)]="local_dat.name" />
-  </mat-form-field>
+<div class="content">
+  <h1 mat-dialog-title><strong>Editar Usuário</strong></h1>
+  <form [formGroup]="userForm">
+    <div class="input-fields" mat-dialog-content>
+      <mat-form-field value="primary">
+        <mat-label>Nome: </mat-label>
+        <input placeholder="Nome" matInput formControlName="name" />
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Username: </mat-label>
-    <input placeholder="username" matInput [(ngModel)]="local_dat.username" />
-  </mat-form-field>
+      <mat-form-field>
+        <mat-label>Username: </mat-label>
+        <input placeholder="username" matInput formControlName="username" />
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Email: </mat-label>
-    <input placeholder="email@email.com" matInput [(ngModel)]="local_dat.email" />
-  </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email: </mat-label>
+        <input placeholder="email@email.com" matInput formControlName="email" />
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Data de Nascimento: </mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="local_dat.dateOfBirth" placeholder="Data de Nascimento" />
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="doAction()">Editar</button>
-  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
+      <mat-form-field>
+        <mat-label>Email: </mat-label>
+        <input placeholder="email@email.com" matInput formControlName="dateOfBirth" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Data de Nascimento: </mat-label>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Data de Nascimento" />
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="actions" mat-dialog-actions>
+      <button mat-button (click)="doAction()">Editar</button>
+      <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
+    </div>
+  </form>
 </div>
