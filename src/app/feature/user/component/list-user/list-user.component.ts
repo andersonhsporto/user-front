@@ -49,6 +49,7 @@ export class ListUserComponent implements OnInit {
       error: (e) => {
         if (e.status === 0) {
           this.connectionError();
+          return;
         }
 
         Swal.fire({
@@ -73,9 +74,17 @@ export class ListUserComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.userService.deleteById(id).subscribe(() => {
-          Swal.fire('Deletado!', 'Usuário foi deletado com sucesso!.', 'success');
-          this.ngOnInit();
+        this.userService.deleteById(id).subscribe({
+          next: () => {
+            Swal.fire('Deletado!', 'Usuário foi deletado com sucesso!.', 'success');
+            this.ngOnInit();
+          },
+          error: (e) => {
+            if (e.status === 0) {
+              this.connectionError();
+              return;
+            }
+          },
         });
       }
     });
