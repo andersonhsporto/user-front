@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+mat-grid-tile {
+  background: #fafafa;
+}
+
 form {
   display: flex;
   align-items: center;
