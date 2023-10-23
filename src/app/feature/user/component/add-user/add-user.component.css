@@ -24,3 +24,7 @@ mat-grid-tile {
 .width-25 {
   width: 25%;
 }
+
+mat-grid-list {
+  border-bottom: 1px solid;
+}

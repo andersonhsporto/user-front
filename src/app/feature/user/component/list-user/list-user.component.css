@@ -1,0 +1,13 @@
+table {
+  background: #fafafa;
+  border-bottom: 1px solid;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+}
