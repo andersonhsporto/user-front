@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'home', component: AddUserComponent
   },
   {
-    path: 'list', component: ListUserComponent
+    path: 'listar', component: ListUserComponent
   },
 ];
 

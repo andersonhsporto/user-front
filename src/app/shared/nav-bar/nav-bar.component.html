@@ -1,11 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
-  <span><mat-icon routerLink="/home">home</mat-icon> Home</span>
+  <span routerLink="/home"><mat-icon >home</mat-icon> Home</span>
   <div class="spacer"></div>
-
-  <!-- <a mat-button routerLink="home" >Home</a>
-  <a mat-button routerLink="about" >About</a>
-  <a mat-button routerLink="services" >Services</a> -->
   <a mat-button routerLink="/home" routerLinkActive="active">Cadastrar </a>
-  <a mat-button routerLink="/list" routerLinkActive="active">Listar Usuários</a>
-  <a mat-raised-button >Sign Up</a>
+  <a mat-button routerLink="/listar" routerLinkActive="active">Listar Usuários</a>
+  <a mat-raised-button routerLink="/home" >Logout</a>
 </mat-toolbar>
