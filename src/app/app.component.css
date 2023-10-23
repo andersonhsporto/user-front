@@ -7,9 +7,7 @@ body {
   "cv01", "cv02", "cv03", "cv04"
   "cv05", "cv06", "cv09", "cv10";
 
-
-  background-color: aqua;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 5px;
 }
