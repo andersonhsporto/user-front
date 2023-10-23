@@ -35,6 +35,17 @@ export class AddUserComponent {
   constructor(private userService: UserService) {}
 
   onSubmit() {
+    this.validateAllFormFields(this.userForm);
+    if (!this.userForm.valid) {
+      Swal.fire({
+        title: 'Erro ao cadastrar o Usuário',
+        text: 'Preencha todos os campo do formulário para proseguir!',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+
+      return;
+    }
     this.createUser();
   }
 
@@ -47,9 +58,23 @@ export class AddUserComponent {
         this.alertSuccess();
       },
       error: (e) => {
-        console.log(e);
+        if (e.status === 0) {
+          this.connectionError();
+          return;
+        }
         this.alertError(e);
       },
+    });
+  }
+
+  validateAllFormFields(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach((field) => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
     });
   }
 
@@ -78,5 +103,14 @@ export class AddUserComponent {
       dateOfBirth: form.dateOfBirth,
       password: form.password,
     };
+  }
+
+  private connectionError(): void {
+    Swal.fire({
+      title: 'Erro de conexão',
+      text: 'Erro ao conectar com o servidor',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
   }
 }
